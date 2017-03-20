@@ -23,16 +23,15 @@ class MyLayer(Layer):
     def build(self, input_shape):
         #为该层创建一个可以训练的变量
         self.kernel = self.add_weight(shape=(input_shape[1],self.output_dim),
-	initializer='uniform',trainable=True)
-        self.trainable_weights = [self.kernel]
+	initializer='uniform',trainable=True)        
         super(MyLayer, self).build()  # be sure you call this somewhere! 
 
-    def call(self, x, mask=None):
-        return K.dot(x, self.W)
+    def call(self, x):
+        return K.dot(x, self.kernel)
 
     def compute_output_shape_for(self, input_shape):
         return (input_shape[0] , self.output_dim)
 ```
 
 
-现存的Keras层代码可以为你的实现提供良好参考，阅读源代码吧！
+现存的Keras层代码可以为你的实现提供良好参考， 不要犹豫，赶快阅读源代码吧！
