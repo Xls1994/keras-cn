@@ -13,12 +13,12 @@ layer =Dense(32)
 config = layer.get_config()
 reconstructed_layer = Dense.from_config(config)
 ```
-Or
+Or:
 ```python
 from keras import layers
 
 config = layer.get_config()
-layer = layer.deserialize({'class_name':layer.__class__.__name__,
+layer = layers.deserialize({'class_name':layer.__class__.__name__,
                            'config':config})
 ```
 如果层仅有一个计算节点（即该层不是共享层），则可以通过下列方法获得输入张量、输出张量、输入数据的形状和输出数据的形状：
